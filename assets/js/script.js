@@ -1,41 +1,85 @@
 // Assignment code here
-var alphaNumericCharacters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
-var specialCharacters = ["!", "#", "$", "%", "&", "(", ")", "*", "+", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "^", "_", "`"]
-console.log(alphaNumericCharacters);
 
-var pwdCriteria = function() {
+//RANDOMNESS FUNCTION
+
+// var randomcharacters = function() {
+//   array[Math.floor(Math.random() * array.length)];
+// }
+
+// PASSWORD CRITERA COLLECTION FUNCTION
+var generatePassword = function() {
+
+  //LENGTH - REQUIRED
   var pwdCriteriaLength = prompt("How long would you like the password? The password can be between 8 and 128 characters long.");
-  pwdCriteriaLength = parseInt(pwdCriteriaLength);
-  console.log(pwdCriteriaLength);
-  console.log(typeof pwdCriteriaLength);
+  // pwdCriteriaLength = parseInt(pwdCriteriaLength);
+  // console.log(pwdCriteriaLength);
+  // console.log(typeof pwdCriteriaLength);
 
-  if (pwdCriteriaLength < 8 || pwdCriteriaLength > 128 || pwdCriteriaLength == null) {
-    console.log("Invalid");
+  if (pwdCriteriaLength < 8 || pwdCriteriaLength > 128 || pwdCriteriaLength == null || isNaN(pwdCriteriaLength) == true) {
+    // console.log("Invalid");
     alert("You must choose a valid number.");
-    return pwdCriteria();
+    return generatePassword();
     } else {
-      console.log("Valid")
-      var pwdCriteriaLower = confirm("Would you like lowercase alphanumeric characters included?");
-      var pwdCriteriaUpper = confirm("Would you like UPPERCASE alphanumeric characters included?");
+      // console.log("Valid")
+      var pwdLength = parseInt(pwdCriteriaLength);
+      // console.log("Your password will be " + pwdLength + " characters long.");
+      // console.log(typeof pwdLength);
+    }
+
+    var pwdCompile = function() {
+      var alphaNumericCharacters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+      var specialCharacters = ["!", "#", "$", "%", "&", "(", ")", "*", "+", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "^", "_", "`"]
+      var validNumbers = [1234567890];
+      // console.log(validNumbers);
+
+      //PWD CONTENTS
+      var pwdCriteriaLower = confirm("Would you like lowercase letters included?");
+      var pwdCriteriaUpper = confirm("Would you like UPPERCASE letters included?");
       var pwdCriteriaNumbers = confirm("Would you like numbers included?");
       var pwdCriteriaSpecial = confirm("Would you like special characters included?");
-      console.log(pwdCriteriaLength + pwdCriteriaLower + pwdCriteriaNumbers + pwdCriteriaUpper + pwdCriteriaSpecial);
-    }
+      var passwordArray = "";
+      // console.log(pwdCriteriaLower + pwdCriteriaNumbers + pwdCriteriaUpper + pwdCriteriaSpecial);
+  
+      if (pwdCriteriaLower == false && pwdCriteriaUpper == false && pwdCriteriaNumbers == false && pwdCriteriaSpecial == false) {
+        alert("You must choose at least one option.");
+        return pwdCompile();
+      } else {
+        // console.log("Great!");
+        if (pwdCriteriaLower == true) {
+          var alphaNumericCharactersLower = alphaNumericCharacters.toString().toLowerCase().split(",");
+          // console.log(alphaNumericCharactersLower);
+          passwordArray = passwordArray.concat(alphaNumericCharactersLower);
+        } 
+
+        if (pwdCriteriaUpper == true) {
+          // console.log(alphaNumericCharacters);
+          passwordArray = passwordArray.concat(alphaNumericCharacters);
+        } 
+
+        if (pwdCriteriaNumbers == true) {
+          var validNumbersString = validNumbers.toString().split("");
+          passwordArray = passwordArray.concat(validNumbersString);
+          // console.log(validNumbersString);
+        } 
+
+        if (pwdCriteriaSpecial == true) {
+          // console.log(specialCharacters);
+          passwordArray = passwordArray.concat(specialCharacters);
+        }
+
+        // CONCATENATE RANDOM STRINGS OR COMPLE INTO AN ARRAY IF CHOOSING RANDOMNESS FUNCTION
+        console.log(passwordArray);
+
+        // RANDOMNESS FUNCITON HERE
+        // SEND TO TEXT AREA
+      }
+      }
+
+pwdCompile();
+
 }
 
-pwdCriteria();
 
-// var passwordCriteria = function() {
-//   if (pwdCriteriaLength >= 8 || pwdCriteriaLength >= 128 || typeof(pwdCriteriaLength) !== "number") {
-//     return passwordCriteria(); 
-//   } 
-//   else {
-//   }
-// }
-
-// function name(params) {
-  
-// }
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
@@ -51,3 +95,12 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
+
+
+// BACK POCKET
+// Sub String to limit characters
+// var string = "this is a string";
+// var length = 7;
+// var trimmedString = string.substring(0, length);
+
