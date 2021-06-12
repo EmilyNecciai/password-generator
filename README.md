@@ -1,12 +1,13 @@
 # password-generator
 Password Generator - Project 3 for GW Bootcamp
-Live site: 
+
+Live site: https://emilynecciai.github.io/password-generator/
 
 Final Screenshot: 
-![Placeholder]()
 
-## Requirements of the Project: 
-(To be duplicated in Issues.)
+![Placeholder](https://github.com/EmilyNecciai/password-generator/blob/adf8f2b65a1acb46b4d99603773b4ba346c47a30/assets/img/mayeski_example.gif)
+
+## Requirements of the Project
 
 ### User Story
 AS AN employee with access to sensitive data
@@ -52,4 +53,10 @@ The following image shows the web application's appearance and functionality:
 3. Concatenate/sum all randomly selected characters (function)
 4. Shuffle order of concatenated characters
 5. Return password
+
+## About My Code
+
+It could probably do with some refactoring and clean up - if you have any suggestions, let me know!
+
+- I left in a lot of commented-out `console.log` lines. I used them to frequently test my code and I thought it would be good to leave them in for future testing one I make some improvements. Turned in as is for the sake of time, though I'm sure there's room for improvement. 
 
