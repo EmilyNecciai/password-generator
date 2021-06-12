@@ -26,19 +26,17 @@ var generatePassword = function() {
         var validNumbers = [1234567890];
         // console.log(validNumbers);
 
-        //PWD CONTENTS
+        //PWD CRITERIA CONFIRM QUESTIONS AND IF STATEMENTS
         var pwdCriteriaLower = confirm("Would you like lowercase letters included?");
         var pwdCriteriaUpper = confirm("Would you like UPPERCASE letters included?");
         var pwdCriteriaNumbers = confirm("Would you like numbers included?");
         var pwdCriteriaSpecial = confirm("Would you like special characters included?");
         var passwordArray = "";
-        // console.log(pwdCriteriaLower + pwdCriteriaNumbers + pwdCriteriaUpper + pwdCriteriaSpecial);
     
         if (pwdCriteriaLower == false && pwdCriteriaUpper == false && pwdCriteriaNumbers == false && pwdCriteriaSpecial == false) {
           alert("You must choose at least one option.");
           return pwdCompile();
         } else {
-          // console.log("Great!");
           if (pwdCriteriaLower == true) {
             var alphaNumericCharactersLower = alphaNumericCharacters.toString().toLowerCase().split(",");
             // console.log(alphaNumericCharactersLower);
@@ -59,27 +57,23 @@ var generatePassword = function() {
             // console.log(specialCharacters);
             passwordArray = passwordArray.concat(specialCharacters);
           }
-
-          // CONCATENATE RANDOM STRINGS OR COMPLE INTO AN ARRAY IF CHOOSING RANDOMNESS FUNCTION
+          // COMPILE INTO ARRAY TEST
           // console.log(passwordArray);
         }
 
-          // RANDOMNESS FUNCITON HERE
+          // RANDOMLY SELECT FROM ARRAY
           for (var i = 0; i < pwdLength; i++) {
             password += passwordArray[Math.floor(Math.random() * passwordArray.length)];
             // password = "";
           }
         }
 
-
+        //CALL FUNCTION
       pwdCompile();
       }
-      // return password.concat(password);
+      // RETURN PASSWORD FOR USE IN HTML
       return password;
     }
-
-
-// document.getElementById("#password").innerHTML = generatePassword();
 
 
 // Get references to the #generate element
@@ -91,11 +85,7 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
 }
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
-
-
